@@ -29,3 +29,12 @@
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+
+@{
+    for (int i = 0; i < ViewBag.dt.Rows.Count; i++) {
+        <div class="row float-left" width="480" height="360">
+            <img class="rounded" src="http://www.yangguangcailan.com/@ViewBag.dt.Rows[i]["goods_img"].ToString()" />
+            @ViewBag.dt.Rows[i]["goods_name"].ToString()
+        </div>
+    }
+}
