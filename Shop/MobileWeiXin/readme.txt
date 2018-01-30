@@ -1,4 +1,4 @@
 ﻿###部署事项
-
+Cailan.mySql
 ###其它说明
 1）初次创建MVC项目后，更新了nuget包，再引用了senparcSDK，结果发布报错。后来删除了整个IIS站点（应用程序），以及VS开发目录（注销后才能清除），重新添加MVC方案，更新所有nuget包，再添加senparSDK，再发布，就正常了。
