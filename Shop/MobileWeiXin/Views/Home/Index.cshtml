@@ -36,9 +36,16 @@
             <img class="rounded" width="180" height="120" src="http://www.yangguangcailan.com/@ViewBag.dt.Rows[i]["goods_img"].ToString()" />
             @ViewBag.dt.Rows[i]["goods_name"].ToString()
         </div>*@
-        <figure class="figure" style="width:180px;height:120px;">
-            <img src="http://www.yangguangcailan.com/@ViewBag.dt.Rows[i]["goods_img"].ToString()" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-            <figcaption class="figure-caption">@ViewBag.dt.Rows[i]["goods_name"].ToString()</figcaption>
-        </figure>
+        @*<figure class="figure index-imgbody" style="width:180px;height:120px;background-color:white;">
+            <img src="http://www.yangguangcailan.com/@ViewBag.dt.Rows[i]["goods_img"].ToString()" class="figure-img img-fluid rounded" alt="">
+            <figcaption class="figure-caption" style="background-color:white;font-size:12px;color:black;">@ViewBag.dt.Rows[i]["goods_name"].ToString()</figcaption>
+        </figure>*@
+        <div class="index-imgbody float-left">
+            <img class="index-img" src="http://www.yangguangcailan.com/@ViewBag.dt.Rows[i]["goods_img"].ToString()" alt="" />
+            <div>
+                <p class="">@ViewBag.dt.Rows[i]["goods_name"].ToString()</p>
+                <p class="goods_shop_price">@ViewBag.dt.Rows[i]["shop_price"].ToString()<span class="goods_market_price">@ViewBag.dt.Rows[i]["market_price"].ToString()</span></p>
+            </div>
+        </div>
     }
 }
