@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     padding-bottom: 20px;
 }
 
@@ -7,6 +7,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    background-color:#EFEFEF;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +22,31 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+/*
+    自己写的了
+*/
+.index-imgbody {
+    margin: 4px;
+    background-color: white;
+    /*border: 1px solid blue;*/
+    width: 160px;
+    font-size:12px;
+    padding:2px;
+}
+    .index-img{
+        width:158px;
+    }
+    .goods_shop_price{
+        font-weight:bold;
+        color:green;
+    }
+    .goods_market_price {
+        color: silver;
+        font-size: 12px;
+        text-decoration: line-through;
+    }
+.figure-caption{
+    font-size:10px;
 }
