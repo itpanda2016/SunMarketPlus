@@ -7,8 +7,10 @@
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
-
-<div class="row">
+<div class="alert alert-warning">
+    商城正在升级，暂时无法下单……
+</div>
+@*<div class="row">
     <div class="col-md-4">
         <h2>Getting started</h2>
         <p>
@@ -28,24 +30,20 @@
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
-</div>
-
-@{
-    for (int i = 0; i < ViewBag.dt.Rows.Count; i++) {
-        @*<div class="row float-left" style="width:180px;height:120px;border:1px solid blue;">
-            <img class="rounded" width="180" height="120" src="http://www.yangguangcailan.com/@ViewBag.dt.Rows[i]["goods_img"].ToString()" />
-            @ViewBag.dt.Rows[i]["goods_name"].ToString()
-        </div>*@
-        @*<figure class="figure index-imgbody" style="width:180px;height:120px;background-color:white;">
-            <img src="http://www.yangguangcailan.com/@ViewBag.dt.Rows[i]["goods_img"].ToString()" class="figure-img img-fluid rounded" alt="">
-            <figcaption class="figure-caption" style="background-color:white;font-size:12px;color:black;">@ViewBag.dt.Rows[i]["goods_name"].ToString()</figcaption>
-        </figure>*@
-        <div class="index-imgbody float-left">
-            <img class="index-img" src="http://www.yangguangcailan.com/@ViewBag.dt.Rows[i]["goods_img"].ToString()" alt="" />
-            <div>
-                <p class="">@ViewBag.dt.Rows[i]["goods_name"].ToString()</p>
-                <p class="goods_shop_price">@ViewBag.dt.Rows[i]["shop_price"].ToString()<span class="goods_market_price">@ViewBag.dt.Rows[i]["market_price"].ToString()</span></p>
+</div>*@
+<div class="row">
+    @{
+        for (int i = 0; i < ViewBag.dt.Rows.Count; i++) {
+            <div class="col index-imgbody">
+                <img class="index-img" src="http://www.yangguangcailan.com/@ViewBag.dt.Rows[i]["goods_img"].ToString()" alt="" />
+                <div class="index-descration">
+                    <p class="">@ViewBag.dt.Rows[i]["goods_name"].ToString()</p>
+                    <p class="goods_shop_price">
+                        @ViewBag.dt.Rows[i]["shop_price"].ToString()<span class="goods_market_price">@ViewBag.dt.Rows[i]["market_price"].ToString()</span>
+                        <span class="float-right"><a href="#">添加</a></span>
+                    </p>
+                </div>
             </div>
-        </div>
+        }
     }
-}
+</div>

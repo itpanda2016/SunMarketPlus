@@ -5,8 +5,8 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    /*padding-left: 15px;
+    padding-right: 15px;*/
     background-color:#EFEFEF;
 }
 
@@ -31,16 +31,24 @@ textarea {
     margin: 4px;
     background-color: white;
     /*border: 1px solid blue;*/
-    width: 160px;
+    /*width:100%;*/
     font-size:12px;
-    padding:2px;
+    padding:4px;
+    text-align:center;
+}
+.index-descration {
+    text-align: left;
+    /*padding: 0px 6px;*/
 }
     .index-img{
-        width:158px;
+        margin:0 auto;
+        /*border:1px solid blue;*/
+        width:154px;
     }
     .goods_shop_price{
         font-weight:bold;
         color:green;
+        
     }
     .goods_market_price {
         color: silver;

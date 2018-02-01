@@ -50,11 +50,13 @@
 
 
 
-
+    
     <div class="container body-content">
+        <div class="clearfix visible-xs"></div>
         @RenderBody()
         <hr />
-        <footer class="clearfix">
+        <div class="clearfix visible-xs"></div>
+        <footer>
             <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 应用程序</p>
         </footer>
     </div>
