@@ -162,9 +162,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\GoodsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OAuth2Controller.cs" />
+    <Compile Include="Controllers\TenPayV3Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -237,9 +241,14 @@
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
     <Content Include="Scripts\umd\popper-utils.js.map" />
     <Content Include="Scripts\README.md" />
+    <Content Include="Views\OAuth2\Index.cshtml" />
+    <Content Include="Views\OAuth2\UserInfoCallback.cshtml" />
+    <Content Include="Views\TenPayV3\ProductList.cshtml" />
+    <Content Include="Views\TenPayV3\ProductItem.cshtml" />
+    <Content Include="Views\TenPayV3\JsApi.cshtml" />
+    <Content Include="Views\TenPayV3\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Views\Goods\" />
   </ItemGroup>
   <ItemGroup>
