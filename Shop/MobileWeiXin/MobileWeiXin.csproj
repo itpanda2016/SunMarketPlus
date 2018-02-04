@@ -160,8 +160,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\GoodsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManagementController.cs" />
+    <Compile Include="Controllers\NavbarController.cs" />
     <Compile Include="Controllers\OAuth2Controller.cs" />
     <Compile Include="Controllers\TenPayV3Controller.cs" />
     <Compile Include="Global.asax.cs">
@@ -247,8 +250,13 @@
     <Content Include="Views\TenPayV3\ProductItem.cshtml" />
     <Content Include="Views\TenPayV3\JsApi.cshtml" />
     <Content Include="Views\TenPayV3\Index.cshtml" />
+    <Content Include="Views\Management\Login.cshtml" />
+    <Content Include="Views\Shared\_ManagementLayout.cshtml" />
+    <Content Include="Views\Management\Index.cshtml" />
+    <Content Include="Views\Navbar\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Authentication\" />
     <Folder Include="Views\Goods\" />
   </ItemGroup>
   <ItemGroup>
