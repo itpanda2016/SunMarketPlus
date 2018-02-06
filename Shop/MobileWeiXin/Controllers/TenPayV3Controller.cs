@@ -94,7 +94,7 @@ namespace MobileWeiXin.Controllers {
                 //实际上可以存任何想传递的数据，比如用户ID，并且需要结合例如下面的Session["OAuthAccessToken"]进行验证
                 return Content("验证失败！请从正规途径进入！1001");
             }
-
+            
             //获取产品信息
             var stateData = state.Split('|');
             int productId = 0;
@@ -116,7 +116,7 @@ namespace MobileWeiXin.Controllers {
             if (openIdResult.errcode != ReturnCode.请求成功) {
                 return Content("错误：" + openIdResult.errmsg);
             }
-
+            
             string timeStamp = "";
             string nonceStr = "";
             string paySign = "";
@@ -132,7 +132,6 @@ namespace MobileWeiXin.Controllers {
             else {
                 sp_billno = Request["order_no"].ToString();
             }
-
             //创建支付应答对象
             RequestHandler packageReqHandler = new RequestHandler(null);
             //初始化
@@ -141,26 +140,33 @@ namespace MobileWeiXin.Controllers {
             timeStamp = TenPayV3Util.GetTimestamp();
             nonceStr = TenPayV3Util.GetNoncestr();
 
-            //设置package订单参数
-            packageReqHandler.SetParameter("appid", TenPayV3Info.AppId);		  //公众账号ID
-            packageReqHandler.SetParameter("mch_id", TenPayV3Info.MchId);		  //商户号
-            packageReqHandler.SetParameter("nonce_str", nonceStr);                    //随机字符串
-            packageReqHandler.SetParameter("body", product == null ? "test" : product.Name);    //商品信息
-            packageReqHandler.SetParameter("out_trade_no", sp_billno);		//商家订单号
-            packageReqHandler.SetParameter("total_fee", product == null ? "100" : (product.Price * 100).ToString());			        //商品金额,以分为单位(money * 100).ToString()
-            packageReqHandler.SetParameter("spbill_create_ip", Request.UserHostAddress);   //用户的公网ip，不是商户服务器IP
-            packageReqHandler.SetParameter("notify_url", TenPayV3Info.TenPayV3Notify);		    //接收财付通通知的URL
-            packageReqHandler.SetParameter("trade_type", TenPayV3Type.JSAPI.ToString());	                    //交易类型
-            packageReqHandler.SetParameter("openid", openIdResult.openid);	                    //用户的openId
-
-            string sign = packageReqHandler.CreateMd5Sign("key", TenPayV3Info.Key);
-            packageReqHandler.SetParameter("sign", sign);	                    //签名
-
-            string data = packageReqHandler.ParseXML();
-
-            var result = TenPayV3.Unifiedorder(data);
-            var res = XDocument.Parse(result);
-            string prepayId = res.Element("xml").Element("prepay_id").Value;
+            string sign, data, prepayId;
+            try {
+                //设置package订单参数
+                packageReqHandler.SetParameter("appid", TenPayV3Info.AppId);          //公众账号ID
+                packageReqHandler.SetParameter("mch_id", TenPayV3Info.MchId);         //商户号
+                packageReqHandler.SetParameter("nonce_str", nonceStr);                    //随机字符串
+                packageReqHandler.SetParameter("body", product == null ? "test" : product.Name);    //商品信息
+                packageReqHandler.SetParameter("out_trade_no", sp_billno);      //商家订单号
+                packageReqHandler.SetParameter("total_fee", product == null ? "100" : (product.Price * 100).ToString());                    //商品金额,以分为单位(money * 100).ToString()
+                packageReqHandler.SetParameter("spbill_create_ip", Request.UserHostAddress);   //用户的公网ip，不是商户服务器IP
+                packageReqHandler.SetParameter("notify_url", TenPayV3Info.TenPayV3Notify);          //接收财付通通知的URL
+                packageReqHandler.SetParameter("trade_type", TenPayV3Type.JSAPI.ToString());                        //交易类型
+                packageReqHandler.SetParameter("openid", openIdResult.openid);                      //用户的openId
+                sign = packageReqHandler.CreateMd5Sign("key", TenPayV3Info.Key);
+                packageReqHandler.SetParameter("sign", sign);                       //签名
+                data = packageReqHandler.ParseXML();
+                return Content("ProductName：" + product.Name 
+                    + "<br />UserIP：" + Request.UserHostAddress 
+                    + "<br />Openid："  + openIdResult.openid 
+                    + "<br />Data：" + data);
+                var result = TenPayV3.Unifiedorder(data);
+                var res = XDocument.Parse(result);
+                prepayId = res.Element("xml").Element("prepay_id").Value;
+            }
+            catch (Exception er) {
+                return Content("调试信息："+ er.ToString());
+            }            
 
             //设置支付参数
             RequestHandler paySignReqHandler = new RequestHandler(null);
