@@ -140,7 +140,7 @@ namespace MobileWeiXin.Controllers {
             timeStamp = TenPayV3Util.GetTimestamp();
             nonceStr = TenPayV3Util.GetNoncestr();
 
-            string sign, data, prepayId;
+            string sign, data, prepayId = "";
             try {
                 //设置package订单参数
                 packageReqHandler.SetParameter("appid", TenPayV3Info.AppId);          //公众账号ID
@@ -156,13 +156,18 @@ namespace MobileWeiXin.Controllers {
                 sign = packageReqHandler.CreateMd5Sign("key", TenPayV3Info.Key);
                 packageReqHandler.SetParameter("sign", sign);                       //签名
                 data = packageReqHandler.ParseXML();
-                return Content("ProductName：" + product.Name 
-                    + "<br />UserIP：" + Request.UserHostAddress 
-                    + "<br />Openid："  + openIdResult.openid 
-                    + "<br />Data：" + data);
+                
                 var result = TenPayV3.Unifiedorder(data);
                 var res = XDocument.Parse(result);
+                return Content("ProductName：" + product.Name
+                    + "<br />UserIP：" + Request.UserHostAddress
+                    + "<br />Openid：" + openIdResult.openid
+                    + "<br />Data：" + data.Length
+                    + "<br />Result：" + result.Length
+                    + "<br />prepayId：" + res.ToString()
+                    );
                 prepayId = res.Element("xml").Element("prepay_id").Value;
+                
             }
             catch (Exception er) {
                 return Content("调试信息："+ er.ToString());
