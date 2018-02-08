@@ -5,5 +5,6 @@ Cailan.mySql
 
 1）初次创建MVC项目后，更新了nuget包，再引用了senparcSDK，结果发布报错。后来删除了整个IIS站点（应用程序），以及VS开发目录（注销后才能清除），重新添加MVC方案，更新所有nuget包，再添加senparSDK，再发布，就正常了。
 3）关于部署的问题 ：先发布到本地（报错就删除debug或inetpub下的），然后压缩包传到服务器，解压后，VS再发布就正常了（不要勾选删除目标所有文件）；
+	3.1）如果发布还有问题 ，就关闭服务器端的ftp软件，停用后，再重新打开，启用。
 #更改记录
 1）TenPayV3Controller的842行处，修改https为http
