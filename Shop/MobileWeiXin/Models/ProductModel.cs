@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace MobileWeiXin.Models {
     /// <summary>
@@ -27,7 +24,7 @@ namespace MobileWeiXin.Models {
         public static List<ProductModel> GetFakeProductList() {
             var list = ProductList ?? new List<ProductModel>()
             {
-                new ProductModel(1,"产品1",(decimal)1.00),
+                new ProductModel(1,"产品1",(decimal)0.01),
                 new ProductModel(2,"产品2",(decimal)2.00),
                 new ProductModel(3,"产品3",(decimal)3.00),
                 new ProductModel(4,"产品4",(decimal)4.00),
